@@ -1,0 +1,25 @@
+dn: cn=config
+changetype: modify
+replace: nsslapd-accesslog-logging-enabled
+nsslapd-accesslog-logging-enabled: off
+-
+replace: nsslapd-accesslog
+nsslapd-accesslog: /tmp/nsslapd-accesslog
+-
+replace: nsslapd-auditlog
+nsslapd-auditlog: /tmp/nsslapd-auditlog
+-
+replace: nsslapd-auditlog-logrotationsync-enabled
+nsslapd-auditlog-logrotationsync-enabled: off
+-
+replace: nsslapd-auditfaillog
+nsslapd-auditfaillog: /tmp/nsslapd-auditfaillog
+-
+replace: nsslapd-auditfaillog-logrotationsync-enabled
+nsslapd-auditfaillog-logrotationsync-enabled: off
+-
+replace: nsslapd-errorlog
+nsslapd-errorlog: /tmp/nsslapd-errorlog
+-
+replace: nsslapd-errorlog-logrotationsync-enabled
+nsslapd-errorlog-logrotationsync-enabled: off
