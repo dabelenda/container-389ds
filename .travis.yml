@@ -15,7 +15,6 @@ after_success:
   - if [ "${TRAVIS_PULL_REQUEST}" == "false" ]; then
       docker login -u="${TRAVIS_SECRET_DOCKER_USERNAME}" -p="${TRAVIS_SECRET_DOCKER_PASSWORD}";
       if [ "${TRAVIS_BRANCH}" == "master" ]; then
-      $bb
         docker push dabelenda/389ds:latest;
       else
         docker push dabelenda/389ds:${TRAVIS_BRANCH};
