@@ -1,0 +1,16 @@
+---
+sudo: required
+
+services:
+  - docker
+
+install:
+  - docker build --no-cache -t dabelenda/389ds:${TRAVIS_BRANCH} .;
+    docker tag $(docker images -q dabelenda/389ds:${TRAVIS_BRANCH}) dabelenda/389ds:latest
+
+after_success:
+  - if [ "${TRAVIS_PULL_REQUEST}" == "false" ]; then
+      docker login -u="${TRAVIS_SECRET_DOCKER_USERNAME}" -p="${TRAVIS_SECRET_DOCKER_PASSWORD}";
+      docker push dabelenda/389ds:${TRAVIS_BRANCH};
+      docker logout;
+    fi
