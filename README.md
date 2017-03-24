@@ -26,6 +26,10 @@ This image has variables to enable replication from one instance to another. The
 - *LDAP_REPLICA_PURGE_DELAY*: delay after which to forget a non-responding node
 - *LDAP_REPLICATION_LOG_KEEP_TIME*: time to keep the change log
 
+## Schema
+
+A Schema definition can be inserted into the ldap server using *LDAP_EXTRA_SCHEMA_DEFS* which must contain a valid schema definition as per [the documentation](https://access.redhat.com/documentation/en-US/Red_Hat_Directory_Server/10/html/Administration_Guide/custom-schema-files.html).
+
 ## Plugins
 
 389ds has a plugin system that allows to enable additionnal features. Some variable are used to enable these features at start time:
