@@ -5,8 +5,11 @@ set -e
 # Define default values of Environment Variables
 : ${LDAP_ROOT_DN:="cn=Directory Manager"}
 : ${LDAP_SUFFIX:="dc=example,dc=com"}
+: ${LDAP_PORT:="389"}
 : ${LDAP_HOSTNAME:=`hostname -s`}
 : ${LDAP_BASEDIR:="/etc/dirsrv/slapd-${LDAP_HOSTNAME}"}
+: ${LDAP_RUN_USER:="root"}
+: ${LDAP_RUN_GROUP:="root"}
 
 # export useful variables
 export LDAP_BASEDIR=${LDAP_BASEDIR}
@@ -15,7 +18,7 @@ export LDAP_BASEDIR=${LDAP_BASEDIR}
 # Test definition of Mandatory Variables
 : ${LDAP_ROOT_PASSWORD:?"The Variable LDAP_ROOT_PASSWORD must be set"}
 
-ldapmodify=( ldapmodify -h localhost -p 389 -x -w "${LDAP_ROOT_PASSWORD}" -D "${LDAP_ROOT_DN}" )
+ldapmodify=( ldapmodify -h localhost -p ${LDAP_PORT} -x -w "${LDAP_ROOT_PASSWORD}" -D "${LDAP_ROOT_DN}" )
 
 if [ ! -d ${LDAP_BASEDIR} ]; then
   find /entrypoint.d -type f | sort -n |
