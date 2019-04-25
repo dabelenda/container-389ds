@@ -1,7 +1,7 @@
 FROM centos:7
 
 RUN mkdir -p /etc/dirsrv ; chmod 0770 /etc/dirsrv
-RUN yum update -y && yum install -y 389-ds-base iproute && yum clean all
+RUN yum update -y && yum install -y 389-ds-base openssl && yum clean all
 
 COPY ./entrypoint.sh /
 COPY ./entrypoint.d/ /entrypoint.d/
